@@ -1,0 +1,280 @@
+---
+import profile from '../../data/profile.json';
+import ThemeSwitcher from '../../components/ThemeSwitcher.astro';
+import './theme.css';
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+---
+
+<article
+  class="metro"
+  data-scene="metro"
+  aria-label="The Last Workshop"
+  data-world-name="Metro"
+  data-world-title="The Last Workshop"
+  data-world-transition="Through the bulkhead. Back to the work."
+>
+  <header class="site-header">
+    <a class="wordmark" href="#metro-home" aria-label={`${profile.name}, home`}>
+      <span class="rail-symbol" aria-hidden="true">
+        <i></i>
+        <i></i>
+      </span>
+      <span>
+        {profile.fullName}
+        <small>Personal portfolio</small>
+      </span>
+    </a>
+    <ThemeSwitcher theme="metro" />
+  </header>
+  <main id="metro-home">
+    <section class="shelter" aria-labelledby="metro-name">
+      <div class="lamp-hit" data-lamp-hit aria-hidden="true"></div>
+      <div class="workshop-art">
+        <img
+          class="workshop-background"
+          data-lazy-src={asset('themes/metro/workshop.svg')}
+          width="1440"
+          height="760"
+          alt="An original underground shelter illustration: a warm hanging lamp lights a radio, mug and papers on a repaired workbench beside a deep railway tunnel."
+        />
+        <div class="lamp-visual" data-lamp-visual aria-hidden="true">
+          <img
+            class="lamp-glow lamp-pool"
+            data-ambient="lamp-glow"
+            data-lazy-src={asset('themes/metro/lamp-pool.svg')}
+            width="1440"
+            height="760"
+            alt=""
+          />
+          <img
+            class="lamp-fixture"
+            data-lamp-fixture
+            data-lazy-src={asset('themes/metro/lamp-fixture.svg')}
+            width="1440"
+            height="760"
+            alt=""
+          />
+          <img
+            class="lamp-glow"
+            data-ambient="lamp-glow"
+            data-lazy-src={asset('themes/metro/lamp-glow.svg')}
+            width="1440"
+            height="760"
+            alt=""
+          />
+        </div>
+        <img
+          class="workshop-foreground"
+          data-lazy-src={asset('themes/metro/workshop-foreground.svg')}
+          width="1440"
+          height="760"
+          alt=""
+          aria-hidden="true"
+        />
+      </div>
+      <div class="shelter-topline">
+        <p class="eyebrow">
+          <span class="small-square" aria-hidden="true"></span>
+          The Last Workshop
+        </p>
+        <span class="eyebrow shelter-index" aria-hidden="true">
+          Lower level / 01
+        </span>
+      </div>
+      <div class="intro">
+        <div class="nameplate" data-reveal>
+          <span class="screw screw-tl" aria-hidden="true"></span>
+          <span class="screw screw-tr" aria-hidden="true"></span>
+          <span class="screw screw-bl" aria-hidden="true"></span>
+          <span class="screw screw-br" aria-hidden="true"></span>
+          <p class="plate-role">{profile.role}</p>
+          <h1 id="metro-name">{profile.name}</h1>
+          <div class="plate-baseline">
+            <span>{profile.location}</span>
+            <span>Building since {profile.careerStart}</span>
+          </div>
+        </div>
+        <h2 class="hero-statement" data-reveal>
+          Keep the useful
+          <br />
+          things running.
+        </h2>
+        <p class="intro-copy" data-reveal>
+          {profile.intro}
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a class="metal-button" href={`mailto:${profile.email}`}>
+            Get in touch
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="resume-link" href={asset(profile.resume)}>
+            The résumé
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+        <nav class="hero-socials" aria-label="Social links" data-reveal>
+          {profile.socials.map((social) => (
+            <a href={social.url}>{social.name} ↗</a>
+          ))}
+        </nav>
+      </div>
+      <div class="shelter-bottom">
+        <span class="eyebrow">
+          {profile.tools.map((tool, index) => (
+            <>
+              {index > 0 && <span aria-hidden="true">/</span>}
+              {tool}
+            </>
+          ))}
+        </span>
+        <p class="art-caption">
+          <span class="lamp-dot" aria-hidden="true"></span>A small corner. A
+          working light.
+        </p>
+      </div>
+    </section>
+    <section class="practice" aria-labelledby="metro-practice">
+      <div class="record-heading">
+        <span class="eyebrow">01 / The work</span>
+        <span class="record-stamp" aria-hidden="true">
+          Made to be useful
+        </span>
+      </div>
+      <div class="practice-grid">
+        <div class="capabilities">
+          <h2 id="metro-practice">
+            Good work.
+            <br />
+            No loose ends.
+          </h2>
+          <p>{profile.about}</p>
+          <ul>
+            {profile.capabilities.map((capability) => (
+              <li>
+                <span aria-hidden="true">+</span>
+                {capability}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="experience">
+          <h3 class="eyebrow">Experience</h3>
+          {profile.experience.map((job) => (
+            <article class="job">
+              <p class="job-period">{job.period}</p>
+              <div>
+                <h4>{job.company}</h4>
+                <p class="job-role">{job.role}</p>
+                <p>{job.summary}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+    <section class="work" aria-labelledby="metro-work">
+      <div class="work-heading">
+        <div>
+          <p class="eyebrow">02 / Out of the workshop</p>
+          <h2 id="metro-work">Projects. Not promises.</h2>
+        </div>
+        <span class="eyebrow work-count">
+          {String(profile.projects.length).padStart(2, '0')} Records
+        </span>
+      </div>
+      {profile.projects
+        .filter((project) => project.featured)
+        .map((project, index) => (
+          <article class="project-record">
+            <a
+              class="project-image"
+              href={
+                project.url.startsWith('http')
+                  ? project.url
+                  : asset(project.url)
+              }
+              aria-label={`Explore ${project.name}`}
+            >
+              <img
+                data-lazy-src={asset(project.image!)}
+                width="800"
+                height="450"
+                alt={`${project.name} project illustration`}
+                loading="lazy"
+              />
+            </a>
+            <div class="project-copy">
+              <p class="eyebrow">
+                0{index + 1} / {project.category}
+              </p>
+              <h3>
+                <a
+                  href={
+                    project.url.startsWith('http')
+                      ? project.url
+                      : asset(project.url)
+                  }
+                >
+                  {project.name}
+                </a>
+              </h3>
+              <p>{project.description}</p>
+              <p class="stack">{project.stack}</p>
+              <div class="project-links">
+                <a
+                  href={
+                    project.url.startsWith('http')
+                      ? project.url
+                      : asset(project.url)
+                  }
+                >
+                  Explore the work
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  href={project.source}
+                  aria-label={`${project.name} source code`}
+                >
+                  Source
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      <div class="small-projects">
+        <p class="eyebrow">Smaller builds</p>
+        {profile.projects
+          .filter((project) => !project.featured)
+          .map((project) => (
+            <a
+              href={
+                project.url.startsWith('http')
+                  ? project.url
+                  : asset(project.url)
+              }
+            >
+              <span>
+                {project.name}
+                <small>{project.description}</small>
+              </span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div>
+      <span class="eyebrow">There’s always something worth making.</span>
+      <a class="footer-contact" href={`mailto:${profile.email}`}>
+        Email
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <nav aria-label="Footer links">
+      <a href={profile.repository}>Source code ↗</a>
+      <a href="#metro-home">Back to top ↑</a>
+    </nav>
+  </footer>
+</article>

@@ -1,0 +1,119 @@
+{
+  "name": "Anandha Krishnan",
+  "fullName": "Anandha Krishnan",
+  "role": "DevOps Engineer",
+  "location": "Alappuzha, Kerala, India",
+  "careerStart": "2024",
+  "email": "anandhakrixnan@gmail.com",
+  "phone": "+91 70345 43456",
+  "website": "https://anandhu.me",
+  "repository": "https://github.com/anandhakrixnnan/anandhu.me",
+  "intro": "I build reliable Linux systems, automate deployments, and turn cloud infrastructure into repeatable code.",
+  "about": "Junior Server Administrator at HashRoot Technologies, supporting production Linux and web hosting environments. My work spans AWS infrastructure, containers, CI/CD, server troubleshooting, and security. I am pursuing a BCA at IGNOU and building my career in DevOps.",
+  "capabilities": [
+    "Linux administration & troubleshooting",
+    "AWS cloud infrastructure & networking",
+    "CI/CD pipelines & container deployments",
+    "Infrastructure as Code & automation",
+    "Web hosting, monitoring & server security"
+  ],
+  "tools": [
+    "Linux",
+    "AWS",
+    "Docker / Compose",
+    "GitHub Actions",
+    "GitLab CI/CD",
+    "Terraform (basic)",
+    "Ansible (basic)",
+    "Bash",
+    "Python (basic)",
+    "Nginx / Apache",
+    "MySQL / PostgreSQL",
+    "Git",
+    "cPanel / WHM",
+    "CyberPanel"
+  ],
+  "resume": "resume.pdf",
+  "socials": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/anandhakrixnnan/"
+    },
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/anandhakrishnankisip/"
+    },
+    {
+      "name": "+91 70345 43456",
+      "url": "tel:+917034543456"
+    },
+    {
+      "name": "anandhu.me",
+      "url": "https://anandhu.me"
+    }
+  ],
+  "experience": [
+    {
+      "company": "HashRoot Technologies Pvt. Ltd.",
+      "role": "Junior Server Administrator",
+      "period": "July 2026 \u2014 Present",
+      "summary": "Administer production Linux servers and cPanel/WHM and CyberPanel hosting. Troubleshoot web, database, DNS, SSL/TLS and email incidents; monitor systems, verify backups, and assist with migrations and hardening."
+    },
+    {
+      "company": "HashRoot Technologies Pvt. Ltd.",
+      "role": "Server Administrator Intern",
+      "period": "April 2026 \u2014 July 2026",
+      "summary": "Assisted with Linux administration, server monitoring, hosting operations, and customer issue investigation across web servers and databases."
+    },
+    {
+      "company": "Sudoskills IT Finishing School",
+      "role": "DevOps Intern",
+      "period": "June 2024 \u2014 Present",
+      "summary": "Built hands-on Linux and AWS labs, provisioned infrastructure with Terraform, automated Django deployments with Ansible, and worked with GitLab CI, Docker and Docker Compose."
+    }
+  ],
+  "projects": [
+    {
+      "id": "kisip-os",
+      "name": "Kisip OS",
+      "category": "Linux engineering",
+      "description": "A Debian-based desktop OS project with custom branding, GNOME defaults, build configuration, installer code, and recorded VM validation. Hardware validation remains in progress.",
+      "stack": "Debian \u00b7 GNOME \u00b7 Bash \u00b7 Python",
+      "url": "https://github.com/anandhakrixnnan/kisip_os",
+      "source": "https://github.com/anandhakrixnnan/kisip_os",
+      "image": "projects/kisip-os.svg",
+      "featured": true
+    },
+    {
+      "id": "kisip-music",
+      "name": "Kisip Music",
+      "category": "Application packaging",
+      "description": "A local-first music player with an Electron desktop shell, a Next.js backend, and server-side YouTube API configuration. Includes Linux packaging and launcher scripts.",
+      "stack": "Linux \u00b7 Electron \u00b7 Next.js \u00b7 TypeScript",
+      "url": "https://github.com/anandhakrixnnan/kisip-music-player",
+      "source": "https://github.com/anandhakrixnnan/kisip-music-player",
+      "image": "projects/kisip-music.svg",
+      "featured": true
+    },
+    {
+      "id": "aws-ha",
+      "name": "AWS High-Availability Infrastructure",
+      "category": "Cloud infrastructure",
+      "description": "Built a multi-tier AWS lab with VPC subnets, EC2, load balancing, Auto Scaling and ACM. Project details are in my CV.",
+      "stack": "AWS \u00b7 EC2 \u00b7 VPC \u00b7 ELB \u00b7 ACM",
+      "url": "resume.pdf",
+      "source": "",
+      "featured": false
+    },
+    {
+      "id": "deployment",
+      "name": "Automated Application Deployment",
+      "category": "DevOps automation",
+      "description": "Hands-on Django deployments with Ansible, Nginx and Gunicorn, plus GitLab CI pipelines and Docker Compose. See my CV for details.",
+      "stack": "Ansible \u00b7 GitLab CI \u00b7 Docker \u00b7 Nginx",
+      "url": "resume.pdf",
+      "source": "",
+      "featured": false
+    }
+  ]
+}

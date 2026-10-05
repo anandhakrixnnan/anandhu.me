@@ -1,0 +1,12 @@
+dist/
+node_modules/
+.astro/
+.scratch/
+.pi/
+package-lock.json
+public/
+test-results/
+playwright-report/
+src/themes/jungle/art/
+src/themes/space/art/
+src/themes/sky/art/
