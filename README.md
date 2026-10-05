@@ -89,20 +89,21 @@ Scenes retain their own markup while reading the same portfolio content. World t
 
 No backend is needed. Deploy the contents of **`dist/`**, not the source tree.
 
-Before deploying, set `site` in `astro.config.mjs` to the portfolio’s public origin. Configure custom domains separately in GitHub Pages; this project does not modify DNS or deploy anything automatically.
+The workflow in `.github/workflows/deploy.yml` runs on pushes to `main` and can also be started manually from Actions. It checks the Pages configuration, installs the committed lockfile with `npm ci`, runs Astro/TypeScript diagnostics, builds at `/` on Node 24, uploads `dist/`, and deploys to the `github-pages` environment. Deployments are serialized without cancelling a release already in progress.
 
-For a repository URL such as `https://<user>.github.io/realms/`:
+One-time repository setup:
 
-1. Set `site` in `astro.config.mjs` to `https://<user>.github.io`.
-2. Build with the repository path (including its trailing slash):
+1. Open **Settings → Pages → Build and deployment** and select **GitHub Actions** as the source.
+2. Under **Custom domain**, enter `anandhu.me` and save. The Astro `site` URL and `public/CNAME` are already set, but GitHub ignores `CNAME` files for Actions publishing; the domain must be saved in Pages settings.
+3. Under **Settings → Environments → github-pages**, allow the `main` branch. If required reviewers are configured, approve the deployment from its Actions run.
+4. Run **Actions → Deploy to GitHub Pages → Run workflow → main** if there is no new push. A green build alone is insufficient: verify that the deploy job finishes successfully and that the public site responds.
+5. Enable **Enforce HTTPS** in Pages settings once the certificate is available.
 
-   ```sh
-   BASE_PATH=/realms/ npm run build
-   ```
+DNS is managed separately and the workflow does not change it. The apex currently uses Cloudflare's proxy, which hides the origin record from public DNS. Inspect the Cloudflare DNS dashboard before changing anything: a flattened apex CNAME to `anandhakrixnnan.github.io`, or A records to GitHub Pages' four addresses, can point to Pages. For direct DNS verification/certificate troubleshooting, use DNS-only records. The optional `www` CNAME should point to `anandhakrixnnan.github.io` (no repository path). See [GitHub's custom-domain instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) for the exact A/AAAA values and HTTPS requirements.
 
-3. Use GitHub Pages Actions to install dependencies (`npm ci`), build, and upload `dist` as the Pages artifact, or publish that directory using your existing deployment process. `public/.nojekyll` is copied into the build for branch-based hosting.
+A queued deploy job with no steps or logs has not run the Pages action yet. Check runner availability and GitHub's Actions status, then the run's queue message and environment rules. An unauthenticated Pages API 404 does not establish that Pages is disabled; reading that endpoint requires repository permissions.
 
-The Astro origin and CNAME target `anandhu.me`. Hosting and DNS must be configured separately; a source push alone does not activate the domain.
+For repository-path hosting instead of the custom domain, set `site` to `https://<user>.github.io`, change the workflow's `BASE_PATH` to `/anandhu.me/`, and test that base before publishing. Do not use the repository base for `https://anandhu.me`.
 
 ## Development conventions
 
